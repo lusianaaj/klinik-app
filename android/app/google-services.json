@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "894672862019",
+    "project_id": "klinik-app-948b5",
+    "storage_bucket": "klinik-app-948b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:894672862019:android:7783d8681bbde3a7650df6",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaDy0F0A4-x_XAZ4J72SFNL_mWwxt4qMk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
