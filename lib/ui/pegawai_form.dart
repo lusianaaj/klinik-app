@@ -14,12 +14,12 @@ class PegawaiForm extends StatefulWidget {
 class _PegawaiFormState extends State<PegawaiForm> {
   final _formKey = GlobalKey<FormState>();
   final _idPegawaiCtrl = TextEditingController();
-  final _nipPegawaiCtrl = TextEditingController();
-  final _namaPegawaiCtrl = TextEditingController();
-  final _tglLahirPegawaiCtrl = TextEditingController();
-  final _noTlpPegawaiCtrl = TextEditingController();
-  final _emailPegawaiCtrl = TextEditingController();
-  final _passwordPegawaiCtrl = TextEditingController();
+  final _nipCtrl = TextEditingController();
+  final _nama_pegawaiCtrl = TextEditingController();
+  final _tanggal_lahirCtrl = TextEditingController();
+  final _nomor_teleponCtrl = TextEditingController();
+  final _emailCtrl = TextEditingController();
+  final _passwordCtrl = TextEditingController();
 
   @override
   void initState() {
@@ -38,7 +38,7 @@ class _PegawaiFormState extends State<PegawaiForm> {
           child: Form(
             child: Column(
               children: [
-                _wTextField(namaField: "Nama Pegawai", namaController: _namaPegawaiCtrl, namaIcon: Icons.room_preferences_rounded),
+                _wTextField(namaField: "Nama Pegawai", namaController: _nama_pegawaiCtrl, namaIcon: Icons.room_preferences_rounded),
                 SizedBox(height: 10),
                 _wTombolSimpan()
               ],
@@ -67,12 +67,12 @@ class _PegawaiFormState extends State<PegawaiForm> {
       onPressed: () async {
         Pegawai pegawai = Pegawai(
             // id: _idPegawaiCtrl.text,
-            nipPegawai: _nipPegawaiCtrl.text,
-            nm_pegawai: _namaPegawaiCtrl.text,
-            tglLahirPegawai: _tglLahirPegawaiCtrl.text,
-            noTlpPegawai: _noTlpPegawaiCtrl.text,
-            emailPegawai: _emailPegawaiCtrl.text,
-            passwordPegawai: _passwordPegawaiCtrl.text,
+            nip: _nipCtrl.text,
+            nama_pegawai: _nama_pegawaiCtrl.text,
+            tanggal_lahir: _tanggal_lahirCtrl.text,
+            nomor_telepon: _nomor_teleponCtrl.text,
+            email: _emailCtrl.text,
+            password: _passwordCtrl.text,
         );
         await PegawaiService().addPegawai(pegawai).then((value) {
           Navigator.pushReplacement(context,

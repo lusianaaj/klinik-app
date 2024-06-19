@@ -25,7 +25,7 @@ class _PasienDetailState extends State<PasienDetail> {
         children: [
           SizedBox(height: 11),
           Text(
-            "ID Pasien : ${widget.pasien.id!}",
+            "ID Pasien : ${widget.pasien.idPasien!}",
             style: TextStyle(fontSize: 20),
           ),
           SizedBox(height: 15),
@@ -38,7 +38,7 @@ class _PasienDetailState extends State<PasienDetail> {
           ),
           SizedBox(height: 11),
           Text(
-            "NIP Pasien : ${widget.pasien.noRm!}",
+            "NIP Pasien : ${widget.pasien.nomor_rm!}",
             style: TextStyle(fontSize: 20),
           ),
           SizedBox(height: 15),
@@ -64,17 +64,17 @@ class _PasienDetailState extends State<PasienDetail> {
           ),
           SizedBox(height: 11),
           Text(
-            "Tanggal Lahir Pasien : ${widget.pasien.tglLahirPasien!}",
+            "Tanggal Lahir Pasien : ${widget.pasien.tanggal_lahir!}",
             style: TextStyle(fontSize: 20),
           ),
           SizedBox(height: 15),
           Text(
-            "Nomor Telepon : ${widget.pasien.noTlpPasien!}",
+            "Nomor Telepon : ${widget.pasien.nomor_telepon!}",
             style: TextStyle(fontSize: 20),
           ),
           SizedBox(height: 11),
           Text(
-            "Alamat Pasien : ${widget.pasien.alamatPasien!}",
+            "Alamat Pasien : ${widget.pasien.alamat!}",
             style: TextStyle(fontSize: 20),
           ),
           SizedBox(height: 15),
@@ -112,7 +112,7 @@ class _PasienDetailState extends State<PasienDetail> {
             // tombol ya
             ElevatedButton(
               onPressed: () async {
-                await _pasienServiceNew.deletePasien(widget.pasien.id!);
+                await _pasienServiceNew.deletePasien(widget.pasien.idPasien!);
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PasienForm()));
               },
               child: Text("YA"),

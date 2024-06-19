@@ -19,7 +19,7 @@ class PegawaiItem extends StatelessWidget {
         elevation: 2,
         margin: EdgeInsets.symmetric(vertical: 8),
         child: ListTile(
-          title: Text(pegawai.nm_pegawai!, style: TextStyle(fontWeight: FontWeight.bold),),
+          title: Text(pegawai.nama_pegawai!, style: TextStyle(fontWeight: FontWeight.bold),),
         ),
       ),
     );

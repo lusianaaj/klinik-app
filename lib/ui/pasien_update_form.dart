@@ -15,21 +15,21 @@ class PasienUpdateForm extends StatefulWidget {
 class _PasienUpdateFormState extends State<PasienUpdateForm> {
   final _formKey = GlobalKey<FormState>();
   final _idPasienCtrl = TextEditingController();
-  final _noRmCtrl = TextEditingController();
-  final _namaPasienCtrl = TextEditingController();
-  final _tglLahirPasienCtrl = TextEditingController();
-  final _noTlpPasienCtrl = TextEditingController();
-  final _alamatPasienCtrl = TextEditingController();
+  final _nomor_rmCtrl = TextEditingController();
+  final _nm_pasienCtrl = TextEditingController();
+  final _tanggal_lahirCtrl = TextEditingController();
+  final _nomor_teleponCtrl = TextEditingController();
+  final _alamatCtrl = TextEditingController();
 
   void initState(){
     super.initState();
     setState(() {
-      _idPasienCtrl.text = widget.pasien.id!;
-      _noRmCtrl.text = widget.pasien.noRm!;
-      _namaPasienCtrl.text = widget.pasien.nm_pasien!;
-      _tglLahirPasienCtrl.text = widget.pasien.tglLahirPasien!;
-      _noTlpPasienCtrl.text = widget.pasien.noTlpPasien!;
-      _alamatPasienCtrl.text = widget.pasien.alamatPasien!;
+      _idPasienCtrl.text = widget.pasien.idPasien!;
+      _nomor_rmCtrl.text = widget.pasien.nomor_rm!;
+      _nm_pasienCtrl.text = widget.pasien.nm_pasien!;
+      _tanggal_lahirCtrl.text = widget.pasien.tanggal_lahir!;
+      _nomor_teleponCtrl.text = widget.pasien.nomor_telepon!;
+      _alamatCtrl.text = widget.pasien.alamat!;
     });
   }
 
@@ -44,7 +44,7 @@ class _PasienUpdateFormState extends State<PasienUpdateForm> {
             key: _formKey,
               child: Column(
                 children: [
-                  _wTextField(namaField: "Nama Pasien", namaController: _namaPasienCtrl, namaIcon: Icons.room_preferences_rounded),
+                  _wTextField(namaField: "Nama Pasien", namaController: _nm_pasienCtrl, namaIcon: Icons.room_preferences_rounded),
                   SizedBox(height: 10),
                   _wTombolUbah()
                 ],
@@ -72,12 +72,12 @@ class _PasienUpdateFormState extends State<PasienUpdateForm> {
     return ElevatedButton(
         onPressed: () async {
           Pasien pasien = Pasien(
-            id: _idPasienCtrl.text,
-            noRm: _noRmCtrl.text,
-            nm_pasien: _namaPasienCtrl.text,
-            tglLahirPasien: _tglLahirPasienCtrl.text,
-            noTlpPasien: _noTlpPasienCtrl.text,
-            alamatPasien: _alamatPasienCtrl.text,
+            idPasien: _idPasienCtrl.text,
+            nomor_rm: _nomor_rmCtrl.text,
+            nm_pasien: _nm_pasienCtrl.text,
+            tanggal_lahir: _tanggal_lahirCtrl.text,
+            nomor_telepon: _nomor_teleponCtrl.text,
+            alamat: _alamatCtrl.text,
           );
           await PasienService().updatePasien(pasien).then((value) {
             Navigator.pushReplacement(context,

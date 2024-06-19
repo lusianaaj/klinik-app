@@ -15,11 +15,11 @@ class PasienForm extends StatefulWidget {
 class _PasienFormState extends State<PasienForm> {
   final _formKey = GlobalKey<FormState>();
   final _idPasienCtrl = TextEditingController();
-  final _noRmCtrl = TextEditingController();
+  final _nomor_rmCtrl = TextEditingController();
   final _namaPasienCtrl = TextEditingController();
-  final _tglLahirPasienCtrl = TextEditingController();
-  final _noTlpPasienCtrl = TextEditingController();
-  final _alamatPasienCtrl = TextEditingController();
+  final _tanggal_lahirCtrl = TextEditingController();
+  final _nomor_teleponCtrl = TextEditingController();
+  final alamatCtrl = TextEditingController();
 
   @override
   void initState() {
@@ -67,11 +67,11 @@ class _PasienFormState extends State<PasienForm> {
       onPressed: () async {
         Pasien pasien = Pasien(
             // id: _idPasienCtrl.text,
-            noRm: _noRmCtrl.text,
+            nomor_rm: _nomor_rmCtrl.text,
             nm_pasien: _namaPasienCtrl.text,
-            tglLahirPasien: _tglLahirPasienCtrl.text,
-            noTlpPasien: _noTlpPasienCtrl.text,
-            alamatPasien: _alamatPasienCtrl.text,
+            tanggal_lahir: _tanggal_lahirCtrl.text,
+            nomor_telepon: _nomor_teleponCtrl.text,
+            alamat: alamatCtrl.text,
         );
         await PasienService().addPasien(pasien).then((value) {
           Navigator.pushReplacement(context,

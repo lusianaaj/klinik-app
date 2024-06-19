@@ -75,7 +75,7 @@ class _PasienPageState extends State<PasienPage> {
                     child: Icon(Icons.delete, color: Colors.white,),
                   ),
                   onDismissed: (direction){
-                    _pasienService.deletePasien(pasien.id!);
+                    _pasienService.deletePasien(pasien.idPasien!);
                   },
                   direction: DismissDirection.endToStart,
                   child: PasienItemPage(pasien: pasien),

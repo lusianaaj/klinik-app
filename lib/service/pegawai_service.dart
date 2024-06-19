@@ -8,7 +8,7 @@ class PegawaiService{
     await _db.collection("pegawai").add(pegawai.toMap());
   }
 
-  updatePegawai(Pegawai egawai) async {
+  updatePegawai(Pegawai pegawai) async {
     var pegawai;
     await _db.collection("pegawai").doc(pegawai.id).update(pegawai.toMap());
   }

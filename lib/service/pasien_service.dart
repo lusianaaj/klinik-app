@@ -10,7 +10,7 @@ class PasienService{
   }
 
   updatePasien(Pasien pasien) async {
-    await _db.collection("pasien").doc(pasien.id).update(pasien.toMap());
+    await _db.collection("pasien").doc(pasien.idPasien).update(pasien.toMap());
   }
 
   Future<void> deletePasien(String id) async {

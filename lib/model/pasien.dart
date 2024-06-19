@@ -2,31 +2,31 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Pasien {
-  final String? id;
-  final String? noRm;
+  final String? idPasien;
+  final String? nomor_rm;
   final String? nm_pasien;
-  final String? tglLahirPasien;
-  final String? noTlpPasien;
-  final String? alamatPasien;
+  final String? tanggal_lahir;
+  final String? nomor_telepon;
+  final String? alamat;
 
-  Pasien({this.id, this.noRm, this.nm_pasien, this.tglLahirPasien, this.noTlpPasien, this.alamatPasien});
+  Pasien({this.idPasien, this.nomor_rm, this.nm_pasien, this.tanggal_lahir, this.nomor_telepon, this.alamat});
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
-      'noRm': noRm,
+      'idPasien': idPasien,
+      'nomor_rm': nomor_rm,
       'nm_pasien': nm_pasien,
-      'tglLahirPasien': tglLahirPasien,
-      'noTlpPasien': noTlpPasien,
-      'alamatPasien': alamatPasien,
+      'tanggal_lahir': tanggal_lahir,
+      'nomor_telepon': nomor_telepon,
+      'alamat': alamat,
     };
   }
 
   Pasien.fromDocumentSnapshot(DocumentSnapshot<Map<String, dynamic>> doc)
-      : id = doc.id,
-        noRm = doc.data()!['noRm'],
+      : idPasien= doc.data()!['idPasien'],
+        nomor_rm = doc.data()!['nomor_rm'],
         nm_pasien = doc.data()!['nm_pasien'],
-        tglLahirPasien = doc.data()!['tglLahirPasien'],
-        noTlpPasien = doc.data()!['noTlpPasien'],
-        alamatPasien = doc.data()!['almatPasien'];
+        tanggal_lahir = doc.data()!['tanggal_lahir'],
+        nomor_telepon = doc.data()!['nomor_telepon'],
+        alamat = doc.data()!['alamat'];
 }

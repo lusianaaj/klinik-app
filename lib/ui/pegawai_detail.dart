@@ -38,7 +38,7 @@ class _PegawaiDetailState extends State<PegawaiDetail> {
           ),
           SizedBox(height: 11),
           Text(
-            "NIP Pegawai : ${widget.pegawai.nipPegawai!}",
+            "NIP Pegawai : ${widget.pegawai.nip!}",
             style: TextStyle(fontSize: 20),
           ),
           SizedBox(height: 15),
@@ -51,24 +51,11 @@ class _PegawaiDetailState extends State<PegawaiDetail> {
           ),
           SizedBox(height: 11),
           Text(
-            "Nama Pegawai : ${widget.pegawai.nm_pegawai!}",
+            "Nama Pegawai : ${widget.pegawai.nama_pegawai!}",
             style: TextStyle(fontSize: 20),
           ),
           Text(
-            "Tanggal Lahir Pegawai : ${widget.pegawai.tglLahirPegawai!}",
-            style: TextStyle(fontSize: 20),
-          ),
-          SizedBox(height: 15),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _tombolubah(),
-              _tombolhapus()
-            ],
-          ),
-          SizedBox(height: 11),
-          Text(
-            "Nomor Telepon : ${widget.pegawai.noTlpPegawai!}",
+            "Tanggal Lahir Pegawai : ${widget.pegawai.tanggal_lahir!}",
             style: TextStyle(fontSize: 20),
           ),
           SizedBox(height: 15),
@@ -81,7 +68,7 @@ class _PegawaiDetailState extends State<PegawaiDetail> {
           ),
           SizedBox(height: 11),
           Text(
-            "Email Pegawai : ${widget.pegawai.emailPegawai!}",
+            "Nomor Telepon : ${widget.pegawai.nomor_telepon!}",
             style: TextStyle(fontSize: 20),
           ),
           SizedBox(height: 15),
@@ -94,7 +81,20 @@ class _PegawaiDetailState extends State<PegawaiDetail> {
           ),
           SizedBox(height: 11),
           Text(
-            "Password Pegawai : ${widget.pegawai.passwordPegawai!}",
+            "Email Pegawai : ${widget.pegawai.email!}",
+            style: TextStyle(fontSize: 20),
+          ),
+          SizedBox(height: 15),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _tombolubah(),
+              _tombolhapus()
+            ],
+          ),
+          SizedBox(height: 11),
+          Text(
+            "Password Pegawai : ${widget.pegawai.password!}",
             style: TextStyle(fontSize: 20),
           ),
           SizedBox(height: 15),
