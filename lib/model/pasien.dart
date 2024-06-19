@@ -1,10 +1,32 @@
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Pasien {
-  String? id;
-  String namaPasien;
-  Pasien({this.id, required this.namaPasien});
-  get idPasien => '7829';
-  get nomor_rm => '19221450';
-  get tanggal_lahir => '18 Januari 2004';
-  get nomor_telepon => '085750537829';
-  get alamat => 'Gang Langgar';
+  final String? id;
+  final String? noRm;
+  final String? nm_pasien;
+  final String? tglLahirPasien;
+  final String? noTlpPasien;
+  final String? alamatPasien;
+
+  Pasien({this.id, this.noRm, this.nm_pasien, this.tglLahirPasien, this.noTlpPasien, this.alamatPasien});
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'noRm': noRm,
+      'nm_pasien': nm_pasien,
+      'tglLahirPasien': tglLahirPasien,
+      'noTlpPasien': noTlpPasien,
+      'alamatPasien': alamatPasien,
+    };
+  }
+
+  Pasien.fromDocumentSnapshot(DocumentSnapshot<Map<String, dynamic>> doc)
+      : id = doc.id,
+        noRm = doc.data()!['noRm'],
+        nm_pasien = doc.data()!['nm_pasien'],
+        tglLahirPasien = doc.data()!['tglLahirPasien'],
+        noTlpPasien = doc.data()!['noTlpPasien'],
+        alamatPasien = doc.data()!['almatPasien'];
 }

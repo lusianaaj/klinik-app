@@ -1,5 +1,6 @@
+
 import 'package:flutter/material.dart';
-import '../model/pegawai.dart';
+import '../../model/pegawai.dart';
 import 'pegawai_detail.dart';
 
 class PegawaiItem extends StatelessWidget {
@@ -10,17 +11,17 @@ class PegawaiItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () async {
+        Navigator.push(context, MaterialPageRoute(builder:
+            (context) => PegawaiDetail(pegawai: pegawai)));
+      },
       child: Card(
+        elevation: 2,
+        margin: EdgeInsets.symmetric(vertical: 8),
         child: ListTile(
-          title: Text("${pegawai.namaPegawai}"),
+          title: Text(pegawai.nm_pegawai!, style: TextStyle(fontWeight: FontWeight.bold),),
         ),
       ),
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => PegawaiDetail(pegawai: pegawai)));
-      },
     );
   }
 }

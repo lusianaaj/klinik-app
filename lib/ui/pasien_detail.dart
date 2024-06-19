@@ -1,6 +1,8 @@
+
 import 'package:flutter/material.dart';
-import 'pasien_page.dart';
-import 'pasien_update_form.dart';
+import '../service/pasien_service.dart';
+import '../ui/pasien_form.dart';
+import '../ui/pasien_update_form.dart';
 import '../model/pasien.dart';
 
 class PasienDetail extends StatefulWidget {
@@ -13,137 +15,124 @@ class PasienDetail extends StatefulWidget {
 }
 
 class _PasienDetailState extends State<PasienDetail> {
+  PasienService _pasienServiceNew = PasienService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Detail Pasien")),
+      appBar: AppBar(title: Text("Detail Pasien"),),
       body: Column(
         children: [
-          SizedBox(height: 20),
+          SizedBox(height: 11),
           Text(
-            "Nama Pasien : ${widget.pasien.namaPasien}",
+            "ID Pasien : ${widget.pasien.id!}",
             style: TextStyle(fontSize: 20),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _tombolUbah(),
-              _tombolHapus(),
+              _tombolubah(),
+              _tombolhapus()
             ],
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 11),
           Text(
-            "ID Pasien : ${widget.pasien.idPasien}",
+            "NIP Pasien : ${widget.pasien.noRm!}",
             style: TextStyle(fontSize: 20),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _tombolUbah(),
-              _tombolHapus(),
+              _tombolubah(),
+              _tombolhapus()
             ],
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 11),
           Text(
-            "Nomor RM : ${widget.pasien.nomor_rm}",
+            "Nama Pasien : ${widget.pasien.nm_pasien!}",
             style: TextStyle(fontSize: 20),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _tombolUbah(),
-              _tombolHapus(),
+              _tombolubah(),
+              _tombolhapus()
             ],
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 11),
           Text(
-            "Tanggal Lahir : ${widget.pasien.tanggal_lahir}",
+            "Tanggal Lahir Pasien : ${widget.pasien.tglLahirPasien!}",
             style: TextStyle(fontSize: 20),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 15),
+          Text(
+            "Nomor Telepon : ${widget.pasien.noTlpPasien!}",
+            style: TextStyle(fontSize: 20),
+          ),
+          SizedBox(height: 11),
+          Text(
+            "Alamat Pasien : ${widget.pasien.alamatPasien!}",
+            style: TextStyle(fontSize: 20),
+          ),
+          SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _tombolUbah(),
-              _tombolHapus(),
+              _tombolubah(),
+              _tombolhapus()
             ],
           ),
-          SizedBox(height: 20),
-          Text(
-            "Nomor Telepon : ${widget.pasien.nomor_telepon}",
-            style: TextStyle(fontSize: 20),
-          ),
-          SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _tombolUbah(),
-              _tombolHapus(),
-            ],
-          ),
-          SizedBox(height: 20),
-          Text(
-            "Alamat : ${widget.pasien.alamat}",
-            style: TextStyle(fontSize: 20),
-          ),
-          SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _tombolUbah(),
-              _tombolHapus(),
-            ],
-          )
         ],
-      ),
+      )
     );
   }
 
-  _tombolUbah() {
+  _tombolubah(){
     return ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      PasienUpdateForm(pasien: widget.pasien)));
-        },
-        style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-        child: const Text("Ubah"));
+      onPressed: (){
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => PasienUpdateForm(pasien: widget.pasien))
+        );
+      },
+      style: ElevatedButton.styleFrom(backgroundColor: Colors.orange, foregroundColor: Colors.white),
+      child: Text("Ubah"),
+    );
   }
 
-  _tombolHapus() {
+  _tombolhapus(){
     return ElevatedButton(
-        onPressed: () {
-          AlertDialog alertDialog = AlertDialog(
-            content: const Text("Yakin ingin menghapus data ini?"),
-            actions: [
-              // tombol ya
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => PasienPage()));
-                },
-                child: const Text("YA"),
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-              ),
-              // tombol batal
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text("Tidak"),
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-              )
-            ],
-          );
-          showDialog(context: context, builder: (context) => alertDialog);
-        },
-        style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-        child: const Text("Hapus"));
+      onPressed: (){
+        AlertDialog alertDialog = AlertDialog(
+          content: Text("Yakin ingin menghapus data ini?"),
+          actions: [
+            // tombol ya
+            ElevatedButton(
+              onPressed: () async {
+                await _pasienServiceNew.deletePasien(widget.pasien.id!);
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PasienForm()));
+              },
+              child: Text("YA"),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.red, foregroundColor: Colors.white),
+            ),
+
+            // tombol batal
+            ElevatedButton(
+              onPressed: (){
+                Navigator.pop(context);
+              },
+              child: Text("Tidak"),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.grey, foregroundColor: Colors.black),
+            )
+          ],
+        );
+        showDialog(context: context, builder: (context) => alertDialog);
+      },
+      style: ElevatedButton.styleFrom(backgroundColor: Colors.red, foregroundColor: Colors.white),
+      child: Text("Hapus"),
+    );
   }
 }

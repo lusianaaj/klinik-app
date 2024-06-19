@@ -1,11 +1,35 @@
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Pegawai {
-  String? id;
-  String namaPegawai;
-  Pegawai({this.id, required this.namaPegawai});
-  get idPegawai => '0004';
-  get nip => '19221450';
-  get tanggal_lahir => '18 Januari 2004';
-  get nomor_telepon => '085750537829';
-  get email => 'lusiana@gmail.com';
-  get password => '12345';
+  final String? id;
+  final String? nipPegawai;
+  final String? nm_pegawai;
+  final String? tglLahirPegawai;
+  final String? noTlpPegawai;
+  final String? emailPegawai;
+  final String? passwordPegawai;
+
+  Pegawai({this.id, this.nipPegawai, this.nm_pegawai, this.tglLahirPegawai, this.noTlpPegawai, this.emailPegawai, this.passwordPegawai});
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'nipPegawai': nipPegawai,
+      'nm_pegawai': nm_pegawai,
+      'tglLahirPegawai': tglLahirPegawai,
+      'noTlpPegawai': noTlpPegawai,
+      'emailPegawai': emailPegawai,
+      'passwordPegawai': passwordPegawai,
+    };
+  }
+
+  Pegawai.fromDocumentSnapshot(DocumentSnapshot<Map<String, dynamic>> doc)
+      : id = doc.id,
+        nipPegawai = doc.data()!['nipPegawai'],
+        nm_pegawai = doc.data()!['nm_pegawai'],
+        tglLahirPegawai = doc.data()!['tglLahirPegawai'],
+        noTlpPegawai = doc.data()!['noTlpPegawai'],
+        emailPegawai = doc.data()!['emailPegawai'],
+        passwordPegawai = doc.data()!['passwordPegawai'];
 }
